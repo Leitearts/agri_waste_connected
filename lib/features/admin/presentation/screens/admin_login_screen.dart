@@ -1,108 +1,28 @@
-import 'package:flutter/material.dart';
-import '../../../../../core/services/navigation_service.dart';
-
-//class AdminLoginScreen extends StatelessWidget {
-  //const AdminLoginScreen({super.key});
-
-  //@override
-  //Widget build(BuildContext context) {
-    //return Scaffold(
-      //body: Padding(
-        //padding: const EdgeInsets.all(16.0),
-        //child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          //children: [
-            //const Text('Recycle Farm Manager Login'),
-            //const SizedBox(height: 32),
-            //TextField(
-              //decoration: const InputDecoration(
-                //labelText: 'Email',
-                //border: OutlineInputBorder(),
-              //),
-            //),
-            //const SizedBox(height: 16),
-            //TextField(
-              //obscureText: true,
-              //decoration: const InputDecoration(
-               // labelText: 'Password',
-                //border: OutlineInputBorder(),
-              //),
-            //),
-            //const SizedBox(height: 16),
-           // SizedBox(
-             // width: double.infinity,
-              //child: ElevatedButton(
-                //onPressed: () {
-                  //NavigationService.replace('/admin/dashboard');
-                //},
-                //child: const Text('LOG IN'),
-              //),
-            //),
-            //TextButton(
-             // onPressed: () {},
-              //child: const Text('Forgot password?'),
-            //),
-          //],
-        //),
-      //),
-    //);
- // }
-//}
-
-// agriwaste_login.dart
-// AgriWaste Connect — Company Portal Login Screen
-// Premium Flutter Material 3 UI | Desktop + Mobile Responsive
-// Ready for Bloc integration
-
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
-// ─────────────────────────────────────────────────────────────
-//  Entry Point
-// ─────────────────────────────────────────────────────────────
-void main() {
-  runApp(const AgriWasteApp());
-}
-
-class AgriWasteApp extends StatelessWidget {
-  const AgriWasteApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'AgriWaste Connect — Company Portal',
-      debugShowCheckedModeBanner: false,
-      theme: AgriWasteTheme.themeData,
-      home: const LoginScreen(),
-    );
-  }
-}
+import '../../../../../core/services/navigation_service.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  Design Tokens
 // ─────────────────────────────────────────────────────────────
-class AgriWasteTheme {
-  // Core Palette
-  static const Color deepGreen = Color(0xFF0D3D2B);
+class _AppColors {
+  static const Color deepGreen   = Color(0xFF0D3D2B);
   static const Color forestGreen = Color(0xFF1A6642);
-  static const Color midGreen = Color(0xFF2E8B57);
   static const Color accentGreen = Color(0xFF3DAA6E);
-  static const Color lightGreen = Color(0xFFD4EDDA);
-  static const Color softBeige = Color(0xFFF7F4EE);
-  static const Color warmBeige = Color(0xFFEDE8DF);
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color neutral50 = Color(0xFFF8F9FA);
-  static const Color neutral100 = Color(0xFFF1F3F4);
-  static const Color neutral200 = Color(0xFFE8EAED);
-  static const Color neutral400 = Color(0xFFBDC1C6);
-  static const Color neutral600 = Color(0xFF80868B);
-  static const Color neutral800 = Color(0xFF3C4043);
-  static const Color neutral900 = Color(0xFF202124);
-  static const Color errorRed = Color(0xFFB00020);
-  static const Color errorRedLight = Color(0xFFFCE8E6);
+  static const Color softBeige   = Color(0xFFF7F4EE);
+  static const Color white       = Color(0xFFFFFFFF);
+  static const Color neutral50   = Color(0xFFF8F9FA);
+  static const Color neutral200  = Color(0xFFE8EAED);
+  static const Color neutral400  = Color(0xFFBDC1C6);
+  static const Color neutral600  = Color(0xFF80868B);
+  static const Color neutral800  = Color(0xFF3C4043);
+  static const Color neutral900  = Color(0xFF202124);
+  static const Color errorRed    = Color(0xFFB00020);
+  static const Color errorRedBg  = Color(0xFFFCE8E6);
 
-  // Gradients
-  static const LinearGradient leftPanelGradient = LinearGradient(
+  static const LinearGradient panelGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [Color(0xFF062518), Color(0xFF0D3D2B), Color(0xFF1A5C3A)],
@@ -114,105 +34,23 @@ class AgriWasteTheme {
     end: Alignment.centerRight,
     colors: [Color(0xFF1A6642), Color(0xFF2E8B57)],
   );
-
-  static ThemeData get themeData => ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: forestGreen,
-          brightness: Brightness.light,
-          primary: forestGreen,
-          secondary: accentGreen,
-          surface: white,
-          error: errorRed,
-        ),
-        fontFamily: 'Georgia',
-        textTheme: const TextTheme(
-          displayLarge: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 32,
-            fontWeight: FontWeight.w700,
-            color: white,
-            letterSpacing: -0.5,
-          ),
-          headlineMedium: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-            color: deepGreen,
-            letterSpacing: -0.3,
-          ),
-          headlineSmall: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: deepGreen,
-          ),
-          bodyLarge: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 15,
-            color: neutral800,
-            height: 1.6,
-          ),
-          bodyMedium: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 13,
-            color: neutral600,
-            height: 1.5,
-          ),
-          labelLarge: TextStyle(
-            fontFamily: 'Georgia',
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 1.2,
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: neutral50,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: neutral200, width: 1.5),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: neutral200, width: 1.5),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: forestGreen, width: 2),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: errorRed, width: 1.5),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: errorRed, width: 2),
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          labelStyle: const TextStyle(color: neutral600, fontSize: 14),
-          floatingLabelStyle: const TextStyle(color: forestGreen, fontSize: 12),
-          hintStyle: const TextStyle(color: neutral400, fontSize: 14),
-        ),
-      );
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Login Screen (Root)
+//  AdminLoginScreen
 // ─────────────────────────────────────────────────────────────
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class AdminLoginScreen extends StatelessWidget {
+  const AdminLoginScreen({super.key});
 
-  static const double _mobileBreakpoint = 768.0;
+  static const double _desktopBreakpoint = 768.0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AgriWasteTheme.softBeige,
+      backgroundColor: _AppColors.softBeige,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final isDesktop = constraints.maxWidth >= _mobileBreakpoint;
+          final isDesktop = constraints.maxWidth >= _desktopBreakpoint;
           return isDesktop
               ? const _DesktopLayout()
               : const _MobileLayout();
@@ -223,7 +61,7 @@ class LoginScreen extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Desktop Layout — Split Screen
+//  Desktop Layout  ─  55 / 45 split
 // ─────────────────────────────────────────────────────────────
 class _DesktopLayout extends StatelessWidget {
   const _DesktopLayout();
@@ -232,16 +70,11 @@ class _DesktopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // LEFT — illustration + branding (55%)
-        Expanded(
-          flex: 55,
-          child: _LeftBrandingPanel(),
-        ),
-        // RIGHT — login card (45%)
+        Expanded(flex: 55, child: _LeftBrandingPanel()),
         Expanded(
           flex: 45,
           child: Container(
-            color: AgriWasteTheme.softBeige,
+            color: _AppColors.softBeige,
             child: const Center(
               child: SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: 48, vertical: 40),
@@ -256,24 +89,21 @@ class _DesktopLayout extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Mobile Layout — Vertical Stack
+//  Mobile Layout  ─  vertical stack
 // ─────────────────────────────────────────────────────────────
 class _MobileLayout extends StatelessWidget {
   const _MobileLayout();
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         children: [
-          // Mobile branding header
           _MobileBrandingHeader(),
-          // Login card
-          const Padding(
-            padding: EdgeInsets.all(20),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 32),
             child: _LoginCard(),
           ),
-          const SizedBox(height: 24),
         ],
       ),
     );
@@ -281,53 +111,33 @@ class _MobileLayout extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Left Branding Panel (Desktop)
+//  Left Branding Panel
 // ─────────────────────────────────────────────────────────────
 class _LeftBrandingPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: AgriWasteTheme.leftPanelGradient,
-      ),
+      decoration: const BoxDecoration(gradient: _AppColors.panelGradient),
       child: Stack(
         children: [
-          // Background geometric pattern
-          const Positioned.fill(child: _EcoPatternBackground()),
-          // SVG-style industrial eco illustration
-          const Positioned.fill(child: _EcoIllustration()),
-          // Gradient overlay (bottom fade for text readability)
+          const Positioned.fill(child: CustomPaint(painter: _HexGridPainter())),
+          const Positioned.fill(child: CustomPaint(painter: _EcoScenePainter())),
+          // Bottom fade for text legibility
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Color(0xCC062518),
-                  ],
+                  colors: [Colors.transparent, Color(0xCC062518)],
                   stops: [0.4, 1.0],
                 ),
               ),
             ),
           ),
-          // Content overlay
-          Positioned(
-            left: 48,
-            right: 48,
-            bottom: 64,
-            child: _BrandingContent(),
-          ),
-          // Top logo bar
-          Positioned(
-            top: 40,
-            left: 48,
-            child: _PanelLogoMark(),
-          ),
-          // Floating stat chips
-          Positioned(
+          Positioned(top: 40, left: 48, child: _PanelLogo()),
+          const Positioned(
             top: 120,
             right: 40,
             child: _StatChip(
@@ -336,14 +146,20 @@ class _LeftBrandingPanel extends StatelessWidget {
               value: '1,284',
             ),
           ),
-          Positioned(
-            top: 200,
+          const Positioned(
+            top: 204,
             right: 40,
             child: _StatChip(
               icon: Icons.recycling,
               label: 'Tons Processed',
               value: '48.6K',
             ),
+          ),
+          Positioned(
+            left: 48,
+            right: 48,
+            bottom: 64,
+            child: _BrandingContent(),
           ),
         ],
       ),
@@ -352,339 +168,9 @@ class _LeftBrandingPanel extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Eco Pattern Background (subtle geometric nodes)
+//  Panel Logo
 // ─────────────────────────────────────────────────────────────
-class _EcoPatternBackground extends StatelessWidget {
-  const _EcoPatternBackground();
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _HexGridPainter(),
-    );
-  }
-}
-
-class _HexGridPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0x0AFFFFFF)
-      ..strokeWidth = 1
-      ..style = PaintingStyle.stroke;
-
-    const double hexSize = 48;
-    const double hexHeight = hexSize * 1.732;
-    const double hexWidth = hexSize * 2;
-
-    for (double y = -hexHeight;
-        y < size.height + hexHeight;
-        y += hexHeight) {
-      for (double x = -hexWidth;
-          x < size.width + hexWidth;
-          x += hexWidth * 0.75) {
-        final offset = (x ~/ (hexWidth * 0.75)).isEven ? 0.0 : hexHeight / 2;
-        _drawHex(canvas, Offset(x, y + offset), hexSize, paint);
-      }
-    }
-
-    // Connection lines (logistics network feel)
-    final linePaint = Paint()
-      ..color = const Color(0x15FFFFFF)
-      ..strokeWidth = 0.8
-      ..style = PaintingStyle.stroke;
-
-    final points = [
-      Offset(size.width * 0.2, size.height * 0.2),
-      Offset(size.width * 0.5, size.height * 0.15),
-      Offset(size.width * 0.75, size.height * 0.3),
-      Offset(size.width * 0.6, size.height * 0.55),
-      Offset(size.width * 0.3, size.height * 0.5),
-      Offset(size.width * 0.15, size.height * 0.7),
-    ];
-
-    for (int i = 0; i < points.length - 1; i++) {
-      canvas.drawLine(points[i], points[i + 1], linePaint);
-    }
-    for (final pt in points) {
-      canvas.drawCircle(
-          pt,
-          4,
-          Paint()
-            ..color = const Color(0x20FFFFFF)
-            ..style = PaintingStyle.fill);
-    }
-  }
-
-  void _drawHex(Canvas canvas, Offset center, double size, Paint paint) {
-    final path = Path();
-    for (int i = 0; i < 6; i++) {
-      final angle = (math.pi / 180) * (60 * i - 30);
-      final x = center.dx + size * math.cos(angle);
-      final y = center.dy + size * math.sin(angle);
-      if (i == 0) {
-        path.moveTo(x, y);
-      } else {
-        path.lineTo(x, y);
-      }
-    }
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-// ─────────────────────────────────────────────────────────────
-//  Eco Industrial Illustration (SVG-style Flutter canvas)
-// ─────────────────────────────────────────────────────────────
-class _EcoIllustration extends StatelessWidget {
-  const _EcoIllustration();
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _EcoScenePainter(),
-    );
-  }
-}
-
-class _EcoScenePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final w = size.width;
-    final h = size.height;
-
-    // ── Ground / terrain bands ──
-    final groundPaint = Paint()..style = PaintingStyle.fill;
-
-    // Far field (lightest green)
-    groundPaint.color = const Color(0x251A6642);
-    final farField = Path()
-      ..moveTo(0, h * 0.52)
-      ..quadraticBezierTo(w * 0.3, h * 0.48, w * 0.6, h * 0.5)
-      ..quadraticBezierTo(w * 0.8, h * 0.52, w, h * 0.49)
-      ..lineTo(w, h)
-      ..lineTo(0, h)
-      ..close();
-    canvas.drawPath(farField, groundPaint);
-
-    // Mid ground
-    groundPaint.color = const Color(0x301A6642);
-    final midGround = Path()
-      ..moveTo(0, h * 0.6)
-      ..quadraticBezierTo(w * 0.25, h * 0.56, w * 0.55, h * 0.59)
-      ..quadraticBezierTo(w * 0.75, h * 0.62, w, h * 0.58)
-      ..lineTo(w, h)
-      ..lineTo(0, h)
-      ..close();
-    canvas.drawPath(midGround, groundPaint);
-
-    // Foreground road / path
-    groundPaint.color = const Color(0x182E8B57);
-    final road = Path()
-      ..moveTo(w * 0.3, h * 0.7)
-      ..lineTo(w * 0.45, h * 0.55)
-      ..lineTo(w * 0.5, h * 0.55)
-      ..lineTo(w * 0.38, h * 0.7)
-      ..close();
-    canvas.drawPath(road, groundPaint);
-
-    // ── Factory / Recycling Facility ──
-    _drawFacility(canvas, Offset(w * 0.3, h * 0.52), w * 0.3, h * 0.25);
-
-    // ── Trees / Farmland ──
-    _drawTree(canvas, Offset(w * 0.08, h * 0.56), 18);
-    _drawTree(canvas, Offset(w * 0.14, h * 0.54), 22);
-    _drawTree(canvas, Offset(w * 0.78, h * 0.55), 20);
-    _drawTree(canvas, Offset(w * 0.85, h * 0.53), 16);
-    _drawTree(canvas, Offset(w * 0.92, h * 0.56), 24);
-
-    // ── Trucks ──
-    _drawTruck(canvas, Offset(w * 0.08, h * 0.68), w * 0.14);
-    _drawTruck(canvas, Offset(w * 0.62, h * 0.66), w * 0.12);
-
-    // ── Farm fields ──
-    _drawFarmField(canvas, Offset(w * 0.7, h * 0.57), w * 0.18, h * 0.08);
-  }
-
-  void _drawFacility(Canvas canvas, Offset origin, double width, double height) {
-    final p = Paint()..style = PaintingStyle.fill;
-    final o = origin;
-    final w = width;
-    final h = height;
-
-    // Main building body
-    p.color = const Color(0x401A6642);
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromLTWH(o.dx - w * 0.5, o.dy - h * 0.6, w * 0.6, h * 0.6),
-        const Radius.circular(4),
-      ),
-      p,
-    );
-
-    // Roof
-    p.color = const Color(0x502E8B57);
-    final roofPath = Path()
-      ..moveTo(o.dx - w * 0.55, o.dy - h * 0.6)
-      ..lineTo(o.dx - w * 0.2, o.dy - h * 0.82)
-      ..lineTo(o.dx + w * 0.12, o.dy - h * 0.6)
-      ..close();
-    canvas.drawPath(roofPath, p);
-
-    // Smokestack / processing tower
-    p.color = const Color(0x353DAA6E);
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromLTWH(o.dx + w * 0.1, o.dy - h * 0.9, w * 0.08, h * 0.9),
-        const Radius.circular(3),
-      ),
-      p,
-    );
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromLTWH(o.dx + w * 0.2, o.dy - h * 0.75, w * 0.07, h * 0.75),
-        const Radius.circular(3),
-      ),
-      p,
-    );
-
-    // Conveyor/loading dock
-    p.color = const Color(0x252E8B57);
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromLTWH(o.dx - w * 0.45, o.dy - h * 0.15, w * 0.15, h * 0.15),
-        const Radius.circular(2),
-      ),
-      p,
-    );
-
-    // Windows row
-    p.color = const Color(0x403DAA6E);
-    for (int i = 0; i < 3; i++) {
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          Rect.fromLTWH(
-              o.dx - w * 0.45 + i * w * 0.16, o.dy - h * 0.45, w * 0.1, h * 0.12),
-          const Radius.circular(2),
-        ),
-        p,
-      );
-    }
-
-    // Recycling symbol (simplified arc)
-    final symPaint = Paint()
-      ..color = const Color(0x403DAA6E)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
-      ..strokeCap = StrokeCap.round;
-    canvas.drawArc(
-      Rect.fromCenter(
-          center: Offset(o.dx - w * 0.22, o.dy - h * 0.28),
-          width: w * 0.14,
-          height: w * 0.14),
-      0,
-      math.pi * 1.5,
-      false,
-      symPaint,
-    );
-  }
-
-  void _drawTree(Canvas canvas, Offset base, double size) {
-    final trunk = Paint()
-      ..color = const Color(0x30D4EDDA)
-      ..style = PaintingStyle.fill;
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromCenter(
-            center: Offset(base.dx, base.dy + size * 0.3),
-            width: size * 0.2,
-            height: size * 0.5),
-        const Radius.circular(2),
-      ),
-      trunk,
-    );
-    final canopy = Paint()
-      ..color = const Color(0x3A3DAA6E)
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(Offset(base.dx, base.dy - size * 0.1), size * 0.5, canopy);
-  }
-
-  void _drawTruck(Canvas canvas, Offset origin, double width) {
-    final p = Paint()..style = PaintingStyle.fill;
-    final h = width * 0.45;
-
-    // Cargo trailer
-    p.color = const Color(0x351A6642);
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(
-        Rect.fromLTWH(origin.dx, origin.dy, width * 0.65, h * 0.65),
-        const Radius.circular(3),
-      ),
-      p,
-    );
-
-    // Cab
-    p.color = const Color(0x452E8B57);
-    final cabPath = Path()
-      ..moveTo(origin.dx + width * 0.65, origin.dy + h * 0.65)
-      ..lineTo(origin.dx + width * 0.65, origin.dy + h * 0.08)
-      ..quadraticBezierTo(
-          origin.dx + width * 0.78, origin.dy,
-          origin.dx + width, origin.dy + h * 0.18)
-      ..lineTo(origin.dx + width, origin.dy + h * 0.65)
-      ..close();
-    canvas.drawPath(cabPath, p);
-
-    // Wheels
-    p.color = const Color(0x50D4EDDA);
-    canvas.drawCircle(Offset(origin.dx + width * 0.18, origin.dy + h * 0.65), h * 0.18, p);
-    canvas.drawCircle(Offset(origin.dx + width * 0.5, origin.dy + h * 0.65), h * 0.18, p);
-    canvas.drawCircle(Offset(origin.dx + width * 0.88, origin.dy + h * 0.65), h * 0.18, p);
-
-    // Recycling stripe
-    p.color = const Color(0x303DAA6E);
-    canvas.drawRect(
-      Rect.fromLTWH(origin.dx + width * 0.05, origin.dy + h * 0.22, width * 0.56, h * 0.12),
-      p,
-    );
-  }
-
-  void _drawFarmField(Canvas canvas, Offset origin, double width, double height) {
-    final p = Paint()
-      ..color = const Color(0x201A6642)
-      ..style = PaintingStyle.fill;
-
-    // Field rows
-    for (int i = 0; i < 4; i++) {
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(
-          Rect.fromLTWH(
-              origin.dx, origin.dy + i * height * 0.28, width, height * 0.12),
-          const Radius.circular(2),
-        ),
-        p,
-      );
-    }
-
-    // Field border
-    final border = Paint()
-      ..color = const Color(0x152E8B57)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
-    canvas.drawRect(Rect.fromLTWH(origin.dx, origin.dy, width, height), border);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-// ─────────────────────────────────────────────────────────────
-//  Panel Logo Mark (top-left of left panel)
-// ─────────────────────────────────────────────────────────────
-class _PanelLogoMark extends StatelessWidget {
+class _PanelLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -694,14 +180,10 @@ class _PanelLogoMark extends StatelessWidget {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            color: AgriWasteTheme.accentGreen,
+            color: _AppColors.accentGreen,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: const Icon(
-            Icons.recycling,
-            color: Colors.white,
-            size: 20,
-          ),
+          child: const Icon(Icons.recycling, color: Colors.white, size: 20),
         ),
         const SizedBox(width: 12),
         const Text(
@@ -729,8 +211,8 @@ class _StatChip extends StatelessWidget {
   });
 
   final IconData icon;
-  final String label;
-  final String value;
+  final String   label;
+  final String   value;
 
   @override
   Widget build(BuildContext context) {
@@ -739,10 +221,10 @@ class _StatChip extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0x22FFFFFF),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0x20FFFFFF), width: 1),
+        border: Border.all(color: const Color(0x20FFFFFF)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withOpacity(0.10),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -751,7 +233,7 @@ class _StatChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: AgriWasteTheme.accentGreen, size: 16),
+          Icon(icon, color: _AppColors.accentGreen, size: 16),
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -783,7 +265,7 @@ class _StatChip extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Branding Content (bottom of left panel)
+//  Branding Content
 // ─────────────────────────────────────────────────────────────
 class _BrandingContent extends StatelessWidget {
   @override
@@ -792,14 +274,13 @@ class _BrandingContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Badge
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
           decoration: BoxDecoration(
-            color: AgriWasteTheme.accentGreen.withOpacity(0.25),
+            color: _AppColors.accentGreen.withOpacity(0.25),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-                color: AgriWasteTheme.accentGreen.withOpacity(0.5), width: 1),
+                color: _AppColors.accentGreen.withOpacity(0.5), width: 1),
           ),
           child: const Text(
             'ENTERPRISE PLATFORM',
@@ -824,20 +305,19 @@ class _BrandingContent extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Monitor collections, manage drivers, track inventory,\nand optimize recycling operations in real time.',
+          'Monitor collections, manage drivers, track inventory,\n'
+          'and optimize recycling operations in real time.',
           style: TextStyle(
             color: Color(0xB3FFFFFF),
             fontSize: 14,
             height: 1.65,
-            letterSpacing: 0.1,
           ),
         ),
-        const SizedBox(height: 32),
-        // Feature pills row
-        Wrap(
+        const SizedBox(height: 28),
+        const Wrap(
           spacing: 10,
           runSpacing: 10,
-          children: const [
+          children: [
             _FeaturePill(icon: Icons.route, label: 'Route Optimization'),
             _FeaturePill(icon: Icons.inventory_2_outlined, label: 'Inventory'),
             _FeaturePill(icon: Icons.analytics_outlined, label: 'Analytics'),
@@ -851,7 +331,7 @@ class _BrandingContent extends StatelessWidget {
 class _FeaturePill extends StatelessWidget {
   const _FeaturePill({required this.icon, required this.label});
   final IconData icon;
-  final String label;
+  final String   label;
 
   @override
   Widget build(BuildContext context) {
@@ -860,12 +340,12 @@ class _FeaturePill extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0x15FFFFFF),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: const Color(0x1AFFFFFF), width: 1),
+        border: Border.all(color: const Color(0x1AFFFFFF)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 13, color: AgriWasteTheme.accentGreen),
+          Icon(icon, size: 13, color: _AppColors.accentGreen),
           const SizedBox(width: 7),
           Text(
             label,
@@ -885,25 +365,24 @@ class _FeaturePill extends StatelessWidget {
 //  Mobile Branding Header
 // ─────────────────────────────────────────────────────────────
 class _MobileBrandingHeader extends StatelessWidget {
+  const _MobileBrandingHeader();
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(24, 56, 24, 36),
-      decoration: const BoxDecoration(
-        gradient: AgriWasteTheme.leftPanelGradient,
-      ),
+      decoration: const BoxDecoration(gradient: _AppColors.panelGradient),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Logo row
           Row(
             children: [
               Container(
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: AgriWasteTheme.accentGreen,
+                  color: _AppColors.accentGreen,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.recycling, color: Colors.white, size: 22),
@@ -959,7 +438,7 @@ class _MobileBrandingHeader extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Login Card (shared between desktop + mobile)
+//  Login Card
 // ─────────────────────────────────────────────────────────────
 class _LoginCard extends StatefulWidget {
   const _LoginCard();
@@ -970,21 +449,18 @@ class _LoginCard extends StatefulWidget {
 
 class _LoginCardState extends State<_LoginCard>
     with SingleTickerProviderStateMixin {
-  // Controllers
-  final _formKey = GlobalKey<FormState>();
-  final _emailCtrl = TextEditingController();
+  final _formKey      = GlobalKey<FormState>();
+  final _emailCtrl    = TextEditingController();
   final _passwordCtrl = TextEditingController();
 
-  // State
-  bool _obscurePassword = true;
-  bool _isLoading = false;
+  bool    _obscurePassword = true;
+  bool    _isLoading       = false;
   String? _errorMessage;
   String? _selectedRole;
 
-  // Animation
   late final AnimationController _animCtrl;
-  late final Animation<double> _fadeAnim;
-  late final Animation<Offset> _slideAnim;
+  late final Animation<double>   _fadeAnim;
+  late final Animation<Offset>   _slideAnim;
 
   static const List<String> _roles = [
     'Manager',
@@ -1000,7 +476,7 @@ class _LoginCardState extends State<_LoginCard>
       vsync: this,
       duration: const Duration(milliseconds: 650),
     );
-    _fadeAnim = CurvedAnimation(parent: _animCtrl, curve: Curves.easeOut);
+    _fadeAnim  = CurvedAnimation(parent: _animCtrl, curve: Curves.easeOut);
     _slideAnim = Tween<Offset>(
       begin: const Offset(0, 0.06),
       end: Offset.zero,
@@ -1021,21 +497,58 @@ class _LoginCardState extends State<_LoginCard>
     if (!(_formKey.currentState?.validate() ?? false)) return;
 
     setState(() => _isLoading = true);
-    // Simulate async auth call (replace with Bloc event)
+
+    // ── Replace this block with your Bloc / auth call ──────────
     await Future.delayed(const Duration(seconds: 2));
 
-    // Demo: show error if email does not contain '@'
-    if (!_emailCtrl.text.contains('@company.com')) {
+    if (!_emailCtrl.text.contains('@')) {
       setState(() {
-        _isLoading = false;
+        _isLoading    = false;
         _errorMessage =
             'Unrecognized company email. Only registered partners may access this portal.';
       });
       return;
     }
+    // ───────────────────────────────────────────────────────────
 
     setState(() => _isLoading = false);
-    // On success → navigate to dashboard
+    NavigationService.replace('/admin/dashboard');
+  }
+
+  InputDecoration _inputDecoration({
+    required String   hint,
+    required IconData prefixIcon,
+    Widget?           suffixIcon,
+  }) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: const TextStyle(color: _AppColors.neutral400, fontSize: 14),
+      filled: true,
+      fillColor: _AppColors.neutral50,
+      prefixIcon: Icon(prefixIcon, color: _AppColors.neutral600, size: 18),
+      suffixIcon: suffixIcon,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _AppColors.neutral200, width: 1.5),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _AppColors.neutral200, width: 1.5),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _AppColors.forestGreen, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _AppColors.errorRed, width: 1.5),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: _AppColors.errorRed, width: 2),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+    );
   }
 
   @override
@@ -1049,17 +562,16 @@ class _LoginCardState extends State<_LoginCard>
           child: Container(
             padding: const EdgeInsets.all(40),
             decoration: BoxDecoration(
-              color: AgriWasteTheme.white,
+              color: _AppColors.white,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: AgriWasteTheme.deepGreen.withOpacity(0.07),
+                  color: _AppColors.deepGreen.withOpacity(0.07),
                   blurRadius: 40,
                   offset: const Offset(0, 12),
-                  spreadRadius: 0,
                 ),
                 BoxShadow(
-                  color: AgriWasteTheme.deepGreen.withOpacity(0.04),
+                  color: _AppColors.deepGreen.withOpacity(0.04),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -1072,17 +584,17 @@ class _LoginCardState extends State<_LoginCard>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // ── Header ──
-                  _CardHeader(),
+                  const _CardHeader(),
                   const SizedBox(height: 32),
 
-                  // ── Error Banner ──
+                  // ── Error banner ──
                   if (_errorMessage != null) ...[
                     _ErrorBanner(message: _errorMessage!),
                     const SizedBox(height: 20),
                   ],
 
-                  // ── Company Email ──
-                  _SectionLabel(text: 'Company Email'),
+                  // ── Email ──
+                  const _FieldLabel(text: 'Company Email'),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _emailCtrl,
@@ -1090,20 +602,18 @@ class _LoginCardState extends State<_LoginCard>
                     textInputAction: TextInputAction.next,
                     style: const TextStyle(
                       fontSize: 14,
-                      color: AgriWasteTheme.neutral900,
+                      color: _AppColors.neutral900,
                     ),
-                    decoration: const InputDecoration(
-                      hintText: 'you@yourcompany.com',
-                      prefixIcon: Icon(
-                        Icons.email_outlined,
-                        color: AgriWasteTheme.neutral600,
-                        size: 18,
-                      ),
+                    decoration: _inputDecoration(
+                      hint: 'you@yourcompany.com',
+                      prefixIcon: Icons.email_outlined,
                     ),
                     validator: (v) {
-                      if (v == null || v.isEmpty) return 'Email is required.';
+                      if (v == null || v.trim().isEmpty) {
+                        return 'Email is required.';
+                      }
                       if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(v)) {
-                        return 'Please enter a valid email address.';
+                        return 'Enter a valid email address.';
                       }
                       return null;
                     },
@@ -1111,7 +621,7 @@ class _LoginCardState extends State<_LoginCard>
                   const SizedBox(height: 20),
 
                   // ── Password ──
-                  _SectionLabel(text: 'Password'),
+                  const _FieldLabel(text: 'Password'),
                   const SizedBox(height: 8),
                   TextFormField(
                     controller: _passwordCtrl,
@@ -1120,32 +630,27 @@ class _LoginCardState extends State<_LoginCard>
                     onFieldSubmitted: (_) => _handleLogin(),
                     style: const TextStyle(
                       fontSize: 14,
-                      color: AgriWasteTheme.neutral900,
+                      color: _AppColors.neutral900,
                     ),
-                    decoration: InputDecoration(
-                      hintText: '••••••••',
-                      prefixIcon: const Icon(
-                        Icons.lock_outline,
-                        color: AgriWasteTheme.neutral600,
-                        size: 18,
-                      ),
+                    decoration: _inputDecoration(
+                      hint: '••••••••',
+                      prefixIcon: Icons.lock_outline,
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: AgriWasteTheme.neutral600,
+                          color: _AppColors.neutral600,
                           size: 18,
                         ),
                         onPressed: () => setState(
                             () => _obscurePassword = !_obscurePassword),
-                        tooltip: _obscurePassword
-                            ? 'Show password'
-                            : 'Hide password',
                       ),
                     ),
                     validator: (v) {
-                      if (v == null || v.isEmpty) return 'Password is required.';
+                      if (v == null || v.isEmpty) {
+                        return 'Password is required.';
+                      }
                       if (v.length < 6) {
                         return 'Password must be at least 6 characters.';
                       }
@@ -1154,8 +659,8 @@ class _LoginCardState extends State<_LoginCard>
                   ),
                   const SizedBox(height: 20),
 
-                  // ── Role Dropdown ──
-                  _SectionLabel(text: 'Role (optional)'),
+                  // ── Role ──
+                  const _FieldLabel(text: 'Role (optional)'),
                   const SizedBox(height: 8),
                   _RoleDropdown(
                     roles: _roles,
@@ -1164,7 +669,7 @@ class _LoginCardState extends State<_LoginCard>
                   ),
                   const SizedBox(height: 12),
 
-                  // ── Forgot Password ──
+                  // ── Forgot password ──
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -1175,9 +680,9 @@ class _LoginCardState extends State<_LoginCard>
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: const Text(
-                        'Forgot Password?',
+                        'Forgot password?',
                         style: TextStyle(
-                          color: AgriWasteTheme.forestGreen,
+                          color: _AppColors.forestGreen,
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
@@ -1186,15 +691,15 @@ class _LoginCardState extends State<_LoginCard>
                   ),
                   const SizedBox(height: 28),
 
-                  // ── Login Button ──
+                  // ── Login button ──
                   _LoginButton(
                     isLoading: _isLoading,
                     onPressed: _handleLogin,
                   ),
                   const SizedBox(height: 24),
 
-                  // ── Security Note ──
-                  _SecurityNote(),
+                  // ── Security note ──
+                  const _SecurityNote(),
                 ],
               ),
             ),
@@ -1209,25 +714,26 @@ class _LoginCardState extends State<_LoginCard>
 //  Card Header
 // ─────────────────────────────────────────────────────────────
 class _CardHeader extends StatelessWidget {
+  const _CardHeader();
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Icon badge
         Container(
           width: 48,
           height: 48,
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [AgriWasteTheme.forestGreen, AgriWasteTheme.accentGreen],
+              colors: [_AppColors.forestGreen, _AppColors.accentGreen],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(14),
             boxShadow: [
               BoxShadow(
-                color: AgriWasteTheme.forestGreen.withOpacity(0.25),
+                color: _AppColors.forestGreen.withOpacity(0.25),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -1240,7 +746,7 @@ class _CardHeader extends StatelessWidget {
         const Text(
           'Company Portal',
           style: TextStyle(
-            color: AgriWasteTheme.deepGreen,
+            color: _AppColors.deepGreen,
             fontSize: 24,
             fontWeight: FontWeight.w700,
             letterSpacing: -0.4,
@@ -1253,8 +759,8 @@ class _CardHeader extends StatelessWidget {
             Container(
               width: 6,
               height: 6,
-              decoration: BoxDecoration(
-                color: AgriWasteTheme.accentGreen,
+              decoration: const BoxDecoration(
+                color: _AppColors.accentGreen,
                 shape: BoxShape.circle,
               ),
             ),
@@ -1262,9 +768,8 @@ class _CardHeader extends StatelessWidget {
             const Text(
               'Authorized personnel only',
               style: TextStyle(
-                color: AgriWasteTheme.neutral600,
+                color: _AppColors.neutral600,
                 fontSize: 13,
-                letterSpacing: 0.1,
               ),
             ),
           ],
@@ -1275,10 +780,10 @@ class _CardHeader extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Section Label
+//  Field Label
 // ─────────────────────────────────────────────────────────────
-class _SectionLabel extends StatelessWidget {
-  const _SectionLabel({required this.text});
+class _FieldLabel extends StatelessWidget {
+  const _FieldLabel({required this.text});
   final String text;
 
   @override
@@ -1286,7 +791,7 @@ class _SectionLabel extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-        color: AgriWasteTheme.neutral800,
+        color: _AppColors.neutral800,
         fontSize: 12,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.3,
@@ -1305,45 +810,45 @@ class _RoleDropdown extends StatelessWidget {
     required this.onChanged,
   });
 
-  final List<String> roles;
-  final String? selected;
+  final List<String>       roles;
+  final String?            selected;
   final ValueChanged<String?> onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: AgriWasteTheme.neutral50,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AgriWasteTheme.neutral200, width: 1.5),
-      ),
       padding: const EdgeInsets.symmetric(horizontal: 14),
+      decoration: BoxDecoration(
+        color: _AppColors.neutral50,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: _AppColors.neutral200, width: 1.5),
+      ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: selected,
+          isExpanded: true,
+          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+              color: _AppColors.neutral600),
+          dropdownColor: _AppColors.white,
+          borderRadius: BorderRadius.circular(12),
+          style: const TextStyle(
+            color: _AppColors.neutral900,
+            fontSize: 14,
+          ),
           hint: Row(
             children: const [
               Icon(Icons.badge_outlined,
-                  size: 18, color: AgriWasteTheme.neutral600),
+                  size: 18, color: _AppColors.neutral600),
               SizedBox(width: 10),
               Text(
                 'Select your role',
                 style: TextStyle(
-                  color: AgriWasteTheme.neutral400,
+                  color: _AppColors.neutral400,
                   fontSize: 14,
                 ),
               ),
             ],
           ),
-          icon: const Icon(Icons.keyboard_arrow_down_rounded,
-              color: AgriWasteTheme.neutral600),
-          isExpanded: true,
-          style: const TextStyle(
-            color: AgriWasteTheme.neutral900,
-            fontSize: 14,
-          ),
-          dropdownColor: AgriWasteTheme.white,
-          borderRadius: BorderRadius.circular(12),
           items: roles
               .map((r) => DropdownMenuItem(value: r, child: Text(r)))
               .toList(),
@@ -1355,7 +860,7 @@ class _RoleDropdown extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  Login Button (with hover + loading states)
+//  Login Button
 // ─────────────────────────────────────────────────────────────
 class _LoginButton extends StatefulWidget {
   const _LoginButton({
@@ -1363,7 +868,7 @@ class _LoginButton extends StatefulWidget {
     required this.onPressed,
   });
 
-  final bool isLoading;
+  final bool         isLoading;
   final VoidCallback onPressed;
 
   @override
@@ -1378,7 +883,7 @@ class _LoginButtonState extends State<_LoginButton> {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
+      onExit:  (_) => setState(() => _hovered = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         height: 52,
@@ -1389,11 +894,11 @@ class _LoginButtonState extends State<_LoginButton> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 )
-              : AgriWasteTheme.buttonGradient,
+              : _AppColors.buttonGradient,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
-              color: AgriWasteTheme.forestGreen
+              color: _AppColors.forestGreen
                   .withOpacity(_hovered ? 0.35 : 0.22),
               blurRadius: _hovered ? 20 : 12,
               offset: const Offset(0, 4),
@@ -1443,34 +948,31 @@ class _ErrorBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSize(
-      duration: const Duration(milliseconds: 250),
-      child: Container(
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: AgriWasteTheme.errorRedLight,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-              color: AgriWasteTheme.errorRed.withOpacity(0.2), width: 1),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.error_outline,
-                color: AgriWasteTheme.errorRed, size: 16),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                message,
-                style: const TextStyle(
-                  color: AgriWasteTheme.errorRed,
-                  fontSize: 12.5,
-                  height: 1.5,
-                ),
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: _AppColors.errorRedBg,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+            color: _AppColors.errorRed.withOpacity(0.2), width: 1),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.error_outline,
+              color: _AppColors.errorRed, size: 16),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              message,
+              style: const TextStyle(
+                color: _AppColors.errorRed,
+                fontSize: 12.5,
+                height: 1.5,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -1480,6 +982,8 @@ class _ErrorBanner extends StatelessWidget {
 //  Security Note
 // ─────────────────────────────────────────────────────────────
 class _SecurityNote extends StatelessWidget {
+  const _SecurityNote();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -1488,20 +992,20 @@ class _SecurityNote extends StatelessWidget {
         color: const Color(0xFFF0F7F4),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-            color: AgriWasteTheme.accentGreen.withOpacity(0.2), width: 1),
+            color: _AppColors.accentGreen.withOpacity(0.2), width: 1),
       ),
       child: Row(
         children: [
           Icon(Icons.shield_outlined,
-              size: 14, color: AgriWasteTheme.forestGreen.withOpacity(0.7)),
+              size: 14,
+              color: _AppColors.forestGreen.withOpacity(0.7)),
           const SizedBox(width: 9),
           const Expanded(
             child: Text(
               'Access restricted to registered recycling partners.',
               style: TextStyle(
-                color: AgriWasteTheme.forestGreen,
+                color: _AppColors.forestGreen,
                 fontSize: 11.5,
-                letterSpacing: 0.1,
                 height: 1.4,
               ),
             ),
@@ -1510,4 +1014,265 @@ class _SecurityNote extends StatelessWidget {
       ),
     );
   }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  Custom Painters
+// ─────────────────────────────────────────────────────────────
+
+/// Subtle hex-grid logistics network background
+class _HexGridPainter extends CustomPainter {
+  const _HexGridPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final stroke = Paint()
+      ..color = const Color(0x0AFFFFFF)
+      ..strokeWidth = 1
+      ..style = PaintingStyle.stroke;
+
+    const double r  = 48;
+    const double hH = r * 1.732;
+    const double hW = r * 2;
+
+    for (double y = -hH; y < size.height + hH; y += hH) {
+      for (double x = -hW; x < size.width + hW; x += hW * 0.75) {
+        final dy = ((x ~/ (hW * 0.75)).isEven) ? 0.0 : hH / 2;
+        _drawHex(canvas, Offset(x, y + dy), r, stroke);
+      }
+    }
+
+    final line = Paint()
+      ..color = const Color(0x15FFFFFF)
+      ..strokeWidth = 0.8;
+
+    final pts = [
+      Offset(size.width * 0.20, size.height * 0.20),
+      Offset(size.width * 0.50, size.height * 0.15),
+      Offset(size.width * 0.75, size.height * 0.30),
+      Offset(size.width * 0.60, size.height * 0.55),
+      Offset(size.width * 0.30, size.height * 0.50),
+      Offset(size.width * 0.15, size.height * 0.70),
+    ];
+
+    for (int i = 0; i < pts.length - 1; i++) {
+      canvas.drawLine(pts[i], pts[i + 1], line);
+    }
+    for (final pt in pts) {
+      canvas.drawCircle(
+        pt,
+        4,
+        Paint()
+          ..color = const Color(0x20FFFFFF)
+          ..style = PaintingStyle.fill,
+      );
+    }
+  }
+
+  void _drawHex(Canvas canvas, Offset c, double r, Paint paint) {
+    final path = Path();
+    for (int i = 0; i < 6; i++) {
+      final a = (math.pi / 180) * (60 * i - 30);
+      final x = c.dx + r * math.cos(a);
+      final y = c.dy + r * math.sin(a);
+      i == 0 ? path.moveTo(x, y) : path.lineTo(x, y);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter _) => false;
+}
+
+/// Eco-industrial scene: facility, trucks, farm fields, trees
+class _EcoScenePainter extends CustomPainter {
+  const _EcoScenePainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final p = Paint()..style = PaintingStyle.fill;
+
+    // Terrain bands
+    p.color = const Color(0x251A6642);
+    canvas.drawPath(_wave(w, h, 0.52, 0.48, 0.50, 0.52, 0.49), p);
+
+    p.color = const Color(0x301A6642);
+    canvas.drawPath(_wave(w, h, 0.60, 0.56, 0.59, 0.62, 0.58), p);
+
+    // Road strip
+    p.color = const Color(0x182E8B57);
+    canvas.drawPath(
+      Path()
+        ..moveTo(w * 0.30, h * 0.70)
+        ..lineTo(w * 0.45, h * 0.55)
+        ..lineTo(w * 0.50, h * 0.55)
+        ..lineTo(w * 0.38, h * 0.70)
+        ..close(),
+      p,
+    );
+
+    _drawFacility(canvas, Offset(w * 0.30, h * 0.52), w * 0.30, h * 0.25);
+
+    for (final t in [
+      [0.08, 0.56, 18.0],
+      [0.14, 0.54, 22.0],
+      [0.78, 0.55, 20.0],
+      [0.85, 0.53, 16.0],
+      [0.92, 0.56, 24.0],
+    ]) {
+      _drawTree(canvas, Offset(w * t[0], h * t[1]), t[2]);
+    }
+
+    _drawTruck(canvas, Offset(w * 0.08, h * 0.68), w * 0.14);
+    _drawTruck(canvas, Offset(w * 0.62, h * 0.66), w * 0.12);
+
+    _drawFarmField(canvas, Offset(w * 0.70, h * 0.57), w * 0.18, h * 0.08);
+  }
+
+  Path _wave(double w, double h, double y0, double cy1, double y1,
+      double cy2, double y2) {
+    return Path()
+      ..moveTo(0, h * y0)
+      ..quadraticBezierTo(w * 0.30, h * cy1, w * 0.60, h * y1)
+      ..quadraticBezierTo(w * 0.80, h * cy2, w, h * y2)
+      ..lineTo(w, h)
+      ..lineTo(0, h)
+      ..close();
+  }
+
+  void _drawFacility(Canvas canvas, Offset o, double fw, double fh) {
+    final p = Paint()..style = PaintingStyle.fill;
+
+    p.color = const Color(0x401A6642);
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(
+            o.dx - fw * 0.5, o.dy - fh * 0.6, fw * 0.6, fh * 0.6),
+        const Radius.circular(4),
+      ),
+      p,
+    );
+
+    p.color = const Color(0x502E8B57);
+    canvas.drawPath(
+      Path()
+        ..moveTo(o.dx - fw * 0.55, o.dy - fh * 0.60)
+        ..lineTo(o.dx - fw * 0.20, o.dy - fh * 0.82)
+        ..lineTo(o.dx + fw * 0.12, o.dy - fh * 0.60)
+        ..close(),
+      p,
+    );
+
+    p.color = const Color(0x353DAA6E);
+    for (final s in [
+      [0.10, 0.90, 0.08],
+      [0.20, 0.75, 0.07],
+    ]) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(o.dx + fw * s[0], o.dy - fh * s[1],
+              fw * s[2], fh * s[1]),
+          const Radius.circular(3),
+        ),
+        p,
+      );
+    }
+
+    p.color = const Color(0x252E8B57);
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(o.dx - fw * 0.45, o.dy - fh * 0.15,
+            fw * 0.15, fh * 0.15),
+        const Radius.circular(2),
+      ),
+      p,
+    );
+
+    p.color = const Color(0x403DAA6E);
+    for (int i = 0; i < 3; i++) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(o.dx - fw * 0.45 + i * fw * 0.16,
+              o.dy - fh * 0.45, fw * 0.10, fh * 0.12),
+          const Radius.circular(2),
+        ),
+        p,
+      );
+    }
+  }
+
+  void _drawTree(Canvas canvas, Offset base, double size) {
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromCenter(
+            center: Offset(base.dx, base.dy + size * 0.3),
+            width: size * 0.2,
+            height: size * 0.5),
+        const Radius.circular(2),
+      ),
+      Paint()
+        ..color = const Color(0x30D4EDDA)
+        ..style = PaintingStyle.fill,
+    );
+    canvas.drawCircle(
+      Offset(base.dx, base.dy - size * 0.1),
+      size * 0.5,
+      Paint()
+        ..color = const Color(0x3A3DAA6E)
+        ..style = PaintingStyle.fill,
+    );
+  }
+
+  void _drawTruck(Canvas canvas, Offset o, double width) {
+    final th = width * 0.45;
+    final p  = Paint()..style = PaintingStyle.fill;
+
+    p.color = const Color(0x351A6642);
+    canvas.drawRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromLTWH(o.dx, o.dy, width * 0.65, th * 0.65),
+        const Radius.circular(3),
+      ),
+      p,
+    );
+
+    p.color = const Color(0x452E8B57);
+    canvas.drawPath(
+      Path()
+        ..moveTo(o.dx + width * 0.65, o.dy + th * 0.65)
+        ..lineTo(o.dx + width * 0.65, o.dy + th * 0.08)
+        ..quadraticBezierTo(o.dx + width * 0.78, o.dy,
+            o.dx + width, o.dy + th * 0.18)
+        ..lineTo(o.dx + width, o.dy + th * 0.65)
+        ..close(),
+      p,
+    );
+
+    p.color = const Color(0x50D4EDDA);
+    for (final x in [0.18, 0.50, 0.88]) {
+      canvas.drawCircle(
+          Offset(o.dx + width * x, o.dy + th * 0.65), th * 0.18, p);
+    }
+  }
+
+  void _drawFarmField(Canvas canvas, Offset o, double fw, double fh) {
+    final p = Paint()
+      ..color = const Color(0x201A6642)
+      ..style = PaintingStyle.fill;
+    for (int i = 0; i < 4; i++) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(o.dx, o.dy + i * fh * 0.28, fw, fh * 0.12),
+          const Radius.circular(2),
+        ),
+        p,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter _) => false;
 }
